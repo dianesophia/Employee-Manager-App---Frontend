@@ -1,0 +1,52 @@
+ <h2>Employee List</h2>
+    <button (click)="openModal()">+ Add Employee</button>
+
+    <!-- Search -->
+    <input 
+      type="text"
+      placeholder="Search employees..."
+      [(ngModel)]="searchText"
+      (input)="filterEmployees()"
+      style="margin:10px 0; padding:5px; width:250px;"
+    />
+
+    <table border="1" cellspacing="0" cellpadding="5">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Contact No</th>
+          <th>Position</th>
+          <th>Department</th>
+          <th>Address</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let emp of filteredEmployees">
+          <td>{{ emp.id }}</td>
+          <td>{{ emp.firstName }}</td>
+          <td>{{ emp.lastName }}</td>
+          <td>{{ emp.email }}</td>
+          <td>{{ emp.contactNo }}</td>
+          <td>{{ emp.position }}</td>
+          <td>{{ emp.department }}</td>
+          <td>{{ emp.address }}</td>
+          <td>
+            <button (click)="viewEmployee(emp)">👁️</button>
+            <button (click)="openModal(emp)">✏️</button>
+            <button (click)="deleteEmployee(emp.id)">🗑️</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Modal -->
+    <app-add-update-employee 
+      *ngIf="modalOpen"
+      [employee]="selectedEmployee"
+      (closeModal)="closeModal($event)"
+      (employeeSaved)="onEmployeeSaved()"
+    ></app-add-update-employee>
