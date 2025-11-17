@@ -1,0 +1,24 @@
+<div class="modal-backdrop" (click)="close()"></div>
+<div class="modal-content">
+  <h2>Employee Details</h2>
+
+  <div class="detail">
+    <strong>Name:</strong> {{ employee?.firstName }} {{ employee?.lastName }}
+  </div>
+  <div class="detail">
+    <strong>Email:</strong> {{ employee?.email }}
+  </div>
+  <div class="detail">
+    <strong>Contact:</strong> {{ employee?.contactNo }}
+  </div>
+  <div class="detail">
+    <strong>Position:</strong> {{ employee?.position }}
+  </div>
+  <div class="detail">
+    <strong>Department:</strong> {{ employee?.department }}
+  </div>
+  <div class="detail">
+    <strong>Address:  </strong> {{ employee?.address }}
+  </div>
+  <button (click)="close()">Close</button>
+</div>

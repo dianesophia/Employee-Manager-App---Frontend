@@ -1,0 +1,76 @@
+.modal-backdrop {
+  position: fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 1000;
+  backdrop-filter: blur(2px);
+}
+
+.modal-content {
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 25px 35px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  z-index: 1001;
+  width: 320px;
+  max-width: 90%;
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  animation: fadeIn 0.25s ease-in-out;
+}
+
+h2 {
+  margin: 0 0 10px 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #23b8cc;
+  text-align: center;
+}
+
+.divider {
+  border: none;
+  height: 1px;
+  background-color: #e0e0e0;
+  margin-bottom: 15px;
+}
+
+.detail {
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.label {
+  font-weight: 500;
+  color: #555;
+}
+
+button {
+  margin-top: 15px;
+  padding: 10px 16px;
+  background-color: #23b8cc;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+button:hover {
+  background-color: #1b8aa0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translate(-50%, -52%); }
+  to { opacity: 1; transform: translate(-50%, -50%); }
+}

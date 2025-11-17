@@ -1,18 +1,43 @@
- <div style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); display:flex; justify-content:center; align-items:center;">
-      <div style="background:#fff; padding:20px; border-radius:8px; min-width:300px;">
-        <h3>{{ employee ? 'Update Employee' : 'Add New Employee' }}</h3>
-        <form (ngSubmit)="saveEmployee()">
-          <input [(ngModel)]="formEmployee.firstName" name="firstName" placeholder="First Name" required>
-          <input [(ngModel)]="formEmployee.lastName" name="lastName" placeholder="Last Name" required>
-          <input [(ngModel)]="formEmployee.email" name="email" placeholder="Email">
-          <input [(ngModel)]="formEmployee.contactNo" name="contactNo" placeholder="Contact No">
-          <input [(ngModel)]="formEmployee.position" name="position" placeholder="Position">
-          <input [(ngModel)]="formEmployee.department" name="department" placeholder="Department">
-          <input [(ngModel)]="formEmployee.address" name="address" placeholder="Address">
-          <div style="margin-top:10px;">
-            <button type="submit">{{ employee ? 'Update' : 'Add' }}</button>
-            <button type="button" (click)="close(false)">Cancel</button>
-          </div>
-        </form>
+<div class="modal-overlay">
+
+
+  <div class="container">
+
+    <h2 class="modal-title">
+      {{ employee ? 'Update Employee' : 'Add New Employee' }}
+    </h2>
+
+    <form (ngSubmit)="saveEmployee()" class="modal-form">
+
+      <input [(ngModel)]="formEmployee.firstName" name="firstName" placeholder="First Name" required>
+
+      <input [(ngModel)]="formEmployee.lastName" name="lastName" placeholder="Last Name" required>
+
+      <input [(ngModel)]="formEmployee.email" name="email" placeholder="Email">
+
+
+      <input [(ngModel)]="formEmployee.contactNo" name="contactNo" placeholder="Contact No">
+
+      <input [(ngModel)]="formEmployee.position" name="position" placeholder="Position">
+
+      <input [(ngModel)]="formEmployee.department" name="department" placeholder="Department">
+
+      <input [(ngModel)]="formEmployee.address" name="address" placeholder="Address">
+
+      <div class="modal-actions">
+        <button type="submit" class="btn-primary">
+          {{ employee ? 'Update' :'Add'}}
+        </button>
+
+        <button type="button" class="btn-cancel" (click)="close(false)">
+          Cancel
+        </button>
+
+        
       </div>
-    </div>
+
+
+    </form>
+  </div>
+
+</div>

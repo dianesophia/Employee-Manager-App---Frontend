@@ -1,3 +1,5 @@
+  //connection from the backend model class
+
   export interface Employee {
     id: number;
     firstName: string;

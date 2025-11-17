@@ -1,19 +1,94 @@
- <h2>Employee List</h2>
-    <button (click)="openModal()">+ Add Employee</button>
+<div class="container">
 
-    <!-- Search -->
+ <div class="header">
+
+  <div class="header-left">
+    <div class="header-icon">
+     <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+      <circle cx="9" cy="7" r="4"/>
+      <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+      <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+    </svg>
+    </div>
+
+    <div class="header-text">
+      <h2>Employee Management</h2>
+      <h5>Manage your team with ease</h5>
+    </div>
+
+  </div>
+</div>
+
+
+
+  <!-- Search -->
+  <div class="search-add-container">
+    <div class="search-wrapper">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="gray" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="search-icon">
+      <circle cx="11" cy="11" r="8"></circle>
+      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+    </svg>
     <input 
       type="text"
-      placeholder="Search employees..."
+      class="search-input"
+      placeholder=" Search employees..."
       [(ngModel)]="searchText"
       (input)="filterEmployees()"
-      style="margin:10px 0; padding:5px; width:250px;"
     />
+  </div>
 
-    <table border="1" cellspacing="0" cellpadding="5">
+
+  <button class="add-btn" (click)="openModal()">+ Add Employee</button>
+</div>
+
+
+
+<div class="summary-cards">
+  <div class="card">
+    <!-- Total Employees Icon -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#23b8cc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+      <circle cx="9" cy="7" r="4"/>
+      <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+      <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+    </svg>
+    <h3>Total Employees</h3>
+    <p>{{ employees.length }}</p>
+  </div>
+
+  <div class="card">
+    <!-- Total Departments Icon -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#23b8cc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/>
+      <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/>
+      <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/>
+      <path d="M10 6h4"/>
+      <path d="M10 10h4"/>
+      <path d="M10 14h4"/>
+      <path d="M10 18h4"/>
+    </svg>
+    <h3>Total Departments</h3>
+    <p>{{ getUniqueDepartments().length }}</p>
+  </div>
+
+  <div class="card">
+   
+    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#23b8cc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+      <rect width="20" height="14" x="2" y="6" rx="2"/>
+    </svg>
+    <h3>Total Roles</h3>
+    <p>{{ getUniquePositions().length }}</p>
+  </div>
+</div>
+
+
+
+  <div class="table-wrapper">
+    <table class="table">
       <thead>
         <tr>
-          <th>ID</th>
           <th>First Name</th>
           <th>Last Name</th>
           <th>Email</th>
@@ -24,9 +99,9 @@
           <th>Actions</th>
         </tr>
       </thead>
+
       <tbody>
         <tr *ngFor="let emp of filteredEmployees">
-          <td>{{ emp.id }}</td>
           <td>{{ emp.firstName }}</td>
           <td>{{ emp.lastName }}</td>
           <td>{{ emp.email }}</td>
@@ -34,19 +109,53 @@
           <td>{{ emp.position }}</td>
           <td>{{ emp.department }}</td>
           <td>{{ emp.address }}</td>
-          <td>
-            <button (click)="viewEmployee(emp)">👁️</button>
-            <button (click)="openModal(emp)">✏️</button>
-            <button (click)="deleteEmployee(emp.id)">🗑️</button>
-          </td>
+        <td class="actions">
+  <!-- Eye -->
+  <svg (click)="viewEmployee(emp)" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-btn view-btn">
+    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+    <circle cx="12" cy="12" r="3"/>
+  </svg>
+
+  <!-- Edit -->
+  <svg (click)="openModal(emp)" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-btn edit-btn">
+    <path d="M12 20h9"/>
+    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19H4v-3L16.5 3.5z"/>
+  </svg>
+
+  <!-- Trash -->
+  <svg (click)="openDeleteModal(emp)" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-btn delete-btn">
+  <polyline points="3 6 5 6 21 6"/>
+  <path d="M19 6l-2 14H7L5 6m5 0V4h4v2"/>
+</svg>
+
+</td>
+
         </tr>
       </tbody>
     </table>
+  </div>
 
-    <!-- Modal -->
-    <app-add-update-employee 
-      *ngIf="modalOpen"
-      [employee]="selectedEmployee"
-      (closeModal)="closeModal($event)"
-      (employeeSaved)="onEmployeeSaved()"
-    ></app-add-update-employee>
+  <!-- Modal -->
+  <app-add-update-employee 
+    *ngIf="modalOpen"
+    [employee]="selectedEmployee"
+    (closeModal)="closeModal($event)"
+    (employeeSaved)="onEmployeeSaved()"
+  ></app-add-update-employee>
+
+
+  <app-employee-view 
+  *ngIf="viewModalOpen" 
+  [employee]="selectedEmployee" 
+  (closeModal)="closeViewModal()">
+</app-employee-view>
+
+<app-delete-confirm
+  *ngIf="deleteModalOpen"
+  [employee]="selectedEmployee"
+  (confirm)="confirmDelete()"
+  (cancel)="cancelDelete()"
+></app-delete-confirm>
+
+
+</div>

@@ -1,0 +1,15 @@
+
+
+<div class="modal">
+
+  <h3>Delete Employee</h3>
+
+  <p>Are you sure you want to delete <strong>{{ employee?.firstName }} {{ employee?.lastName }}</strong>?</p>
+  <div class="buttons">
+
+    <button class="confirm-btn" (click)="onConfirm()">Delete</button>
+
+    <button class="cancel-btn" (click)="onCancel()">Cancel</button>
+    
+  </div>
+</div>
