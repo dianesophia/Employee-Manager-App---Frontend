@@ -2,6 +2,60 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.10.
 
+## Features
+
+- View all employees in a list  
+- Add a new employee  
+- Update employee details  
+- Delete employees (soft delete)  
+- Search and filter employees  
+- Responsive design for desktop and mobile  
+
+---
+
+## Technology Stack
+
+- **Frontend Framework:** Angular 20.3.10  
+- **Language:** TypeScript, HTML, CSS  
+- **Package Manager:** npm  
+- **Build Tool:** Angular CLI  
+- **Testing:** Karma (unit tests), optional e2e frameworks like Cypress or Protractor 
+
+
+---
+
+## Prerequisites
+
+- [Node.js](https://nodejs.org/) (v18+ recommended)  
+- [Angular CLI](https://angular.io/cli)  
+- [npm](https://www.npmjs.com/) (comes with Node.js)  
+- Backend API running (Employee Manager Backend)  
+
+---
+
+## Setup Instructions
+
+1. **Clone the repository**
+
+```bash
+git clone https://github.com/dianesophia/EmployeeManagerUI.git
+cd EmployeeManagerUI
+```
+
+
+2. **Install dependencies**
+```bash
+npm install
+```
+
+
+3. **Configure Backend API**
+   ---
+If your backend is running on a different port or URL, update the API endpoints in the Angular services (src/app/services/employee.service.ts) to match your backend URL. For example:
+```bash
+  private apiUrl = 'https://localhost:7175/api/Employee'; 
+```
+
 ## Development server
 
 To start a local development server, run:
